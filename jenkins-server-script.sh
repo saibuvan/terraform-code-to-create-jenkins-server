@@ -7,7 +7,9 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 sudo yum upgrade -y
-sudo amazon-linux-extras install openjdk-17-jdk -y
+sudo rpm --import https://yum.corretto.aws/corretto.key
+sudo curl -Lo /etc/yum.repos.d/corretto.repo https://yum.corretto.aws/corretto.repo
+sudo yum install -y java-17-amazon-corretto-devel
 sudo yum install jenkins -y
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
